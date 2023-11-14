@@ -10,7 +10,8 @@ const Sandbox = () => {
     <SandboxWrapper>
       <nav>
         <ComponentLink>
-          <p>Marino</p>
+          <p>UseState</p>
+          <p>UseEffect</p>
         </ComponentLink>
       </nav>
 
