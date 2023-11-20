@@ -1,17 +1,63 @@
 import React from "react";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const ReactUseState = () => {
+  const [state, setState] = useState({ count: 4, theme: "blue" });
+  const count = state.count;
+  const theme = state.theme;
+
+  function minusCount() {
+    setState((prevState) => {
+      return { ...prevState, count: prevState.count - 1 };
+    });
+  }
+
+  function addCount() {
+    setState((prevState) => {
+      return { count: prevState.count + 1 };
+    });
+  }
+
+  /*  const [count, setCount] = useState(() => {
+    console.log("function runs 1 time when the function version is used");
+    return 4;
+  });
+
+function countInitial() {
+      console.log("runs everytime it's render");
+    return 4;
+  }
+   const [count, setCount] = useState(countInitial());
+   OR
+   const [count, setCount] = useState(4,  console.log("runs everytime it's render"););
+    
+
+  function minusCount() {
+    setCount(count - 1);
+    setCount((prevCount) => prevCount - 1);
+  }
+
+  function addCount() {
+   setCount(count +1);
+   setCount((prevCount) => prevCount + 1);
+  }
+ */
   return (
     <ReactUseStateWrapper>
       <h2 className="headerSection">UseState</h2>
 
       <div className="clickerSection">
         <h3>Clicker!</h3>
-        <button className="minusBtn">-</button>
-        <span className="nb">0</span>
-        <button className="plusBtn">+</button>
+        <button className="minusBtn" onClick={minusCount}>
+          -
+        </button>
+        <span className="nb">{count}</span>
+        <span className="nb">{theme}</span>
+        <button className="plusBtn" onClick={addCount}>
+          +
+        </button>
       </div>
     </ReactUseStateWrapper>
   );

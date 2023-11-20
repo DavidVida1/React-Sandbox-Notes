@@ -15,7 +15,7 @@ const Sandbox = () => {
         </ComponentLink>
       </nav>
 
-      <div className="container">{navData[0].navComponent}</div>
+      <div className="container">{navData[1].navComponent}</div>
     </SandboxWrapper>
   );
 };
