@@ -83,7 +83,6 @@ const ReactUseStateWrapper = styled.section`
   }
 
   & .clickerSection {
-    box-shadow: 0px 0px 10px red;
     & h3 {
       font-size: 2rem;
       margin: 40px 0px;

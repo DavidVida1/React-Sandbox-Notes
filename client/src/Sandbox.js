@@ -1,21 +1,42 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
 import ReactUseStateWrapper from "./Pages/ReactUseState";
 import navData from "./Data/data.js";
 import ReactUseState from "./Pages/ReactUseState";
 
 const Sandbox = () => {
+  const [navState, setNavState] = useState(() => {
+    return 0;
+  });
+
+  const handleNavClick = (index) => {
+    setNavState(index);
+  };
+
   return (
     <SandboxWrapper>
       <nav>
         <ComponentLink>
-          <p>UseState</p>
-          <p>UseEffect</p>
+          {navData.map((navEle, index) => {
+            return (
+              <p
+                onClick={() => {
+                  handleNavClick(index);
+                }}
+              >
+                {navEle.name}
+              </p>
+            );
+          })}
         </ComponentLink>
       </nav>
 
-      <div className="container">{navData[1].navComponent}</div>
+      <div className="container">
+        {navData[navState].navComponent}
+        <img src={navData[navState].img} />
+      </div>
     </SandboxWrapper>
   );
 };
@@ -40,22 +61,26 @@ const SandboxWrapper = styled.section`
     color: var(--color-white);
   }
 
-  .container {
+  & .container {
     padding: 15px;
     font-size: 2rem;
+    & img {
+      max-height: 900px;
+      width: auto;
+    }
   }
-  nav {
+  & nav {
     height: 50vh;
     align-self: center;
   }
 `;
 
-const ComponentLink = styled(NavLink)`
+const ComponentLink = styled.div`
   height: 50vh;
   align-self: center;
   color: var(--color-white);
 
-  p {
+  & p {
     padding: 10px;
     text-align: center;
     font-size: 2rem;
