@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyles from "./GlobalStyles";
 import styled from "styled-components";
 import Header from "./Header";
-import Home from "./Home";
+import Sandbox from "./Sandbox";
 import "./cssReset.css";
 
 function App() {
@@ -11,9 +11,8 @@ function App() {
     <BrowserRouter>
       <GlobalStyles />
       <Header />
-
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Sandbox />} />
       </Routes>
     </BrowserRouter>
   );

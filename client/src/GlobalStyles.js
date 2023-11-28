@@ -8,7 +8,7 @@ export default createGlobalStyle`
       --color-warning: #F7D060; 
 
 
-
+      --background-color-black2:  rgba(0,19,36,1);
       --background-color-black:  #2b2b2b;
       --color-white:#FFFF;
       --color-black:#000;
@@ -58,7 +58,7 @@ body{
     width: 100%;
     height: 100vh;
     overflow-x: hidden;
-    background-color: var(--background-color-black) ;
+    background-color: var(--background-color-black2) ;
 }
 
 

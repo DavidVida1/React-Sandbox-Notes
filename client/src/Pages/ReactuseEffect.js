@@ -5,13 +5,26 @@ import { NavLink } from "react-router-dom";
 const ReactUseEffect = () => {
   const [ressourceType, setRessourceType] = useState("posts");
   const [items, setItems] = useState([]);
-  console.log("render");
+  const [windowWidth, setwindowWidth] = useState(window.innerWidth);
+
+  const handleResize = () => {
+    setwindowWidth(window.innerWidth);
+  };
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/${ressourceType}`)
       .then((response) => response.json())
       .then((json) => setItems(json));
   }, [ressourceType]);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      /* return in useEffect is a cleamUp so always have one when an addEventListener is at use
+      so you dont constantly re add */
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <ReactUseStateWrapper>
@@ -21,6 +34,7 @@ const ReactUseEffect = () => {
         <button onClick={() => setRessourceType("posts")}>Posts</button>
         <button onClick={() => setRessourceType("users")}>users</button>
         <button onClick={() => setRessourceType("comments")}>Comments</button>
+        <button>{windowWidth}</button>
       </div>
       <h2>{ressourceType}</h2>
       {items.map((item) => {

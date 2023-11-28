@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
-import ReactUseStateWrapper from "./Pages/ReactUseState";
+import { useState } from "react";
+import bg from "./assets/garden.jpg";
+import bg2 from "./assets/garden2.png";
 import navData from "./Data/data.js";
-import ReactUseState from "./Pages/ReactUseState";
 
 const Sandbox = () => {
   const [navState, setNavState] = useState(() => {
@@ -17,17 +16,21 @@ const Sandbox = () => {
 
   return (
     <SandboxWrapper>
+      <img src={bg2} alt="bgImg" />
       <nav>
         <ComponentLink>
           {navData.map((navEle, index) => {
             return (
-              <p
-                onClick={() => {
-                  handleNavClick(index);
-                }}
-              >
-                {navEle.name}
-              </p>
+              <>
+                <p
+                  onClick={() => {
+                    handleNavClick(index);
+                  }}
+                >
+                  {navEle.icon}
+                  {navEle.name}
+                </p>
+              </>
             );
           })}
         </ComponentLink>
@@ -43,47 +46,53 @@ const Sandbox = () => {
 
 const SandboxWrapper = styled.section`
   display: grid;
-  grid-template-columns: 250px auto;
+  grid-template-columns: 275px auto;
   height: 100vh;
   width: 100vw;
-  gap: 10px;
-  padding: 15px;
   color: var(--color-white);
 
-  & .container,
-  nav {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
+  & img {
+    position: absolute;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+  & nav {
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 3px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(9.5px);
     -webkit-backdrop-filter: blur(9.5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
     color: var(--color-white);
   }
 
   & .container {
-    padding: 15px;
     font-size: 2rem;
+    padding: 0px 15px;
     & img {
       max-height: 900px;
       width: auto;
     }
   }
-  & nav {
-    height: 50vh;
-    align-self: center;
-  }
 `;
 
 const ComponentLink = styled.div`
-  height: 50vh;
-  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
   color: var(--color-white);
-
   & p {
-    padding: 10px;
-    text-align: center;
+    padding: 15px 30px;
     font-size: 2rem;
+    &:first-child {
+      color: red;
+    }
+  }
+  & svg {
+    margin: 0px 15px;
   }
 `;
 
