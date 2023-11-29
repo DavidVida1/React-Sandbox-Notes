@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
-import bg from "./assets/garden.jpg";
+import { CiUser } from "react-icons/ci";
 import bg2 from "./assets/garden2.png";
 import navData from "./Data/data.js";
 
@@ -14,22 +14,43 @@ const Sandbox = () => {
     setNavState(index);
   };
 
+  const openNav = () => {
+    let sidebar = document.querySelector(".sidebar");
+
+    sidebar.classList.toggle("active");
+  };
+
   return (
     <SandboxWrapper>
       <img src={bg2} alt="bgImg" />
-      <nav>
+      <nav className="sidebar">
+        <div className="user">
+          <p className="name">
+            <CiUser />
+            0wlAlone
+          </p>
+          <button
+            className="burger"
+            onClick={() => {
+              openNav();
+            }}
+          >
+            &#9776;
+          </button>
+        </div>
+
         <ComponentLink>
           {navData.map((navEle, index) => {
             return (
               <>
-                <p
+                <button
                   onClick={() => {
                     handleNavClick(index);
                   }}
                 >
-                  {navEle.icon}
-                  {navEle.name}
-                </p>
+                  <p>{navEle.icon}</p>
+                  <p className="name">{navEle.name}</p>
+                </button>
               </>
             );
           })}
@@ -37,7 +58,7 @@ const Sandbox = () => {
       </nav>
 
       <div className="container">
-        {navData[navState].navComponent}
+        <div>{navData[navState].navComponent}</div>
         <img src={navData[navState].img} />
       </div>
     </SandboxWrapper>
@@ -51,6 +72,10 @@ const SandboxWrapper = styled.section`
   width: 100vw;
   color: var(--color-white);
 
+  &:has(.sidebar.active) {
+    grid-template-columns: 78px auto;
+  }
+
   & img {
     position: absolute;
     object-fit: cover;
@@ -58,7 +83,9 @@ const SandboxWrapper = styled.section`
     width: 100%;
     z-index: -1;
   }
-  & nav {
+  & .sidebar {
+    width: 275px;
+    text-align: center;
     height: 100%;
     background: rgba(0, 0, 0, 0.35);
     border-radius: 3px;
@@ -66,12 +93,34 @@ const SandboxWrapper = styled.section`
     backdrop-filter: blur(9.5px);
     -webkit-backdrop-filter: blur(9.5px);
     color: var(--color-white);
+    padding: 15px 15px;
+    font-size: 2rem;
+
+    & .user {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-size: 2rem;
+      padding: 30px 0px;
+      & svg {
+        margin-right: 15px;
+      }
+    }
+
+    &.active {
+      width: 78px;
+      & .name {
+        display: none;
+      }
+    }
   }
 
   & .container {
     font-size: 2rem;
-    padding: 0px 15px;
+    margin: 15px 15px;
+
     & img {
+      position: relative;
       max-height: 900px;
       width: auto;
     }
@@ -83,16 +132,23 @@ const ComponentLink = styled.div`
   flex-direction: column;
   align-items: flex-start;
   flex-wrap: wrap;
-  color: var(--color-white);
-  & p {
-    padding: 15px 30px;
-    font-size: 2rem;
-    &:first-child {
-      color: red;
+
+  & button {
+    display: flex;
+    flex-direction: row;
+    padding: 15px 0px;
+
+    &:hover {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.45);
+      border-radius: 3px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(9.5px);
+      -webkit-backdrop-filter: blur(9.5px);
     }
   }
   & svg {
-    margin: 0px 15px;
+    margin-right: 15px;
   }
 `;
 

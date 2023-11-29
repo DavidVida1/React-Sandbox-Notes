@@ -61,6 +61,11 @@ body{
     background-color: var(--background-color-black2) ;
 }
 
+button {
+  background-color:transparent;
+  color: inherit;
+  font-size: inherit;
+}
 
 
 `;

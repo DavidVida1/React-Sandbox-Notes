@@ -48,29 +48,47 @@ const HomeWrapper = styled.section`
 
       & .text {
         max-width: 600px;
+        p:last-child {
+          color: #00a86b;
+          filter: drop-shadow(0.1rem 0px 0px rgba(0, 0, 0, 0.5))
+            drop-shadow(-0.1rem 0px 0px rgba(0, 0, 0, 0.5))
+            drop-shadow(0px 0.1rem 0px rgba(0, 0, 0, 0.5))
+            drop-shadow(0px -0.1rem 0px rgba(0, 0, 0, 0.5));
+        }
       }
 
       & h2 {
         display: flex;
-        font-size: 40px;
+        font-size: 4.5rem;
         letter-spacing: 5px;
 
         & span {
           color: var(--color-primary);
+          filter: drop-shadow(0.1rem 0px 0px rgba(0, 0, 0, 0.5))
+            drop-shadow(-0.1rem 0px 0px rgba(0, 0, 0, 0.5))
+            drop-shadow(0px 0.1rem 0px rgba(0, 0, 0, 0.5))
+            drop-shadow(0px -0.1rem 0px rgba(0, 0, 0, 0.5));
         }
         & img {
           position: relative;
           height: 50px;
           width: 50px;
+          filter: drop-shadow(0.1rem 0px 0px rgba(0, 0, 0, 0.5))
+            drop-shadow(-0.1rem 0px 0px rgba(0, 0, 0, 0.5))
+            drop-shadow(0px 0.1rem 0px rgba(0, 0, 0, 0.5))
+            drop-shadow(0px -0.1rem 0px rgba(0, 0, 0, 0.5));
         }
       }
       & p {
-        font-size: 25px;
+        font-size: 2.5rem;
         color: white;
         & span {
           font-size: 27px;
-          text-shadow: rgba(216, 179, 144, 0.5) 1px 0 10px;
           color: var(--color-primary);
+          filter: drop-shadow(0.1rem 0px 0px rgba(0, 0, 0, 0.5))
+            drop-shadow(-0.1rem 0px 0px rgba(0, 0, 0, 0.5))
+            drop-shadow(0px 0.1rem 0px rgba(0, 0, 0, 0.5))
+            drop-shadow(0px -0.1rem 0px rgba(0, 0, 0, 0.5));
         }
       }
     }

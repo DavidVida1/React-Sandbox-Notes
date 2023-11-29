@@ -27,7 +27,7 @@ const ReactUseEffect = () => {
   }, []);
 
   return (
-    <ReactUseStateWrapper>
+    <ReactUseEffectWrapper>
       <h2 className="headerSection">UseEffect</h2>
 
       <div className="containerDevSimplified">
@@ -40,11 +40,11 @@ const ReactUseEffect = () => {
       {items.map((item) => {
         return <pre>{JSON.stringify(item)}</pre>;
       })}
-    </ReactUseStateWrapper>
+    </ReactUseEffectWrapper>
   );
 };
 
-const ReactUseStateWrapper = styled.section`
+const ReactUseEffectWrapper = styled.section`
   margin: 20px;
 
   & .headerSection {
