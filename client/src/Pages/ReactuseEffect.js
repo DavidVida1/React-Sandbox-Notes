@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
 
 const ReactUseEffect = () => {
   const [ressourceType, setRessourceType] = useState("posts");
@@ -28,7 +27,7 @@ const ReactUseEffect = () => {
 
   return (
     <ReactUseEffectWrapper>
-      <h2 className="headerSection">UseEffect</h2>
+      <h2 className="headerSection">UseEffect WeBDevSimplified</h2>
 
       <div className="containerDevSimplified">
         <button onClick={() => setRessourceType("posts")}>Posts</button>
@@ -58,7 +57,7 @@ const ReactUseEffectWrapper = styled.section`
       display: block;
       height: 2px;
       width: 130px;
-      transform: translate3d(100%, -0.9rem, 0);
+      transform: translate3d(300%, -0.9rem, 0);
       background: white;
     }
   }

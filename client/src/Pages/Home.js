@@ -47,7 +47,7 @@ const HomeWrapper = styled.section`
       padding-left: var(--padding-portfolio);
 
       & .text {
-        max-width: 600px;
+        max-width: 700px;
         p:last-child {
           color: #00a86b;
           filter: drop-shadow(0.1rem 0px 0px rgba(0, 0, 0, 0.5))

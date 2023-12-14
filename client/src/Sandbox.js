@@ -79,6 +79,7 @@ const SandboxWrapper = styled.section`
   & img {
     position: absolute;
     object-fit: cover;
+    margin: 0px 25px;
     height: 100%;
     width: 100%;
     z-index: -1;
@@ -108,7 +109,7 @@ const SandboxWrapper = styled.section`
     }
 
     &.active {
-      width: 78px;
+      width: 65px;
       & .name {
         display: none;
       }

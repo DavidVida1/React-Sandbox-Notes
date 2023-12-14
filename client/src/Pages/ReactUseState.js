@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 
 const ReactUseState = () => {
   const [state, setState] = useState({ count: 4, theme: "blue" });
@@ -46,7 +45,7 @@ function countInitial() {
  */
   return (
     <ReactUseStateWrapper>
-      <h2 className="headerSection">UseState</h2>
+      <h2 className="headerSection">UseState WeBDevSimplified</h2>
 
       <div className="clickerSection">
         <h3>Clicker!</h3>
@@ -77,7 +76,7 @@ const ReactUseStateWrapper = styled.section`
       display: block;
       height: 2px;
       width: 130px;
-      transform: translate3d(100%, -0.9rem, 0);
+      transform: translate3d(300%, -0.9rem, 0);
       background: white;
     }
   }
