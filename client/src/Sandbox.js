@@ -22,7 +22,7 @@ const Sandbox = () => {
 
   return (
     <SandboxWrapper>
-      <img src={bg2} alt="bgImg" />
+      <img className="homeBg" src={bg2} alt="bgImg" />
       <nav className="sidebar">
         <div className="user">
           <p className="name">
@@ -59,7 +59,7 @@ const Sandbox = () => {
 
       <div className="container">
         <div>{navData[navState].navComponent}</div>
-        <img src={navData[navState].img} />
+        <img className="dataImg" src={navData[navState].img} />
       </div>
     </SandboxWrapper>
   );
@@ -76,7 +76,7 @@ const SandboxWrapper = styled.section`
     grid-template-columns: 78px auto;
   }
 
-  & img {
+  & .homeBg {
     position: absolute;
     object-fit: cover;
     margin: 0px 25px;
@@ -117,11 +117,12 @@ const SandboxWrapper = styled.section`
   }
 
   & .container {
+    position: relative;
     font-size: 2rem;
     margin: 15px 15px;
 
-    & img {
-      position: relative;
+    & .dataImg {
+      position: absolute;
       max-height: 900px;
       width: auto;
     }
