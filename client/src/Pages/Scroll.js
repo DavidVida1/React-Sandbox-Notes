@@ -10,12 +10,12 @@ export default function Scroll() {
     window.addEventListener("scroll", reveal);
 
     function reveal() {
-      var reveals = document.querySelectorAll(".reveal");
+      let reveals = document.querySelectorAll(".reveal");
 
       reveals.forEach((reveal) => {
-        var windowHeight = window.innerHeight;
-        var revealTop = reveal.getBoundingClientRect().top;
-        var revealPoint = 150;
+        let windowHeight = window.innerHeight;
+        let revealTop = reveal.getBoundingClientRect().top;
+        let revealPoint = 150;
 
         if (revealTop < windowHeight - revealPoint) {
           reveal.classList.add("active");
@@ -40,6 +40,34 @@ reveals[i].classList.add("active");
         }
 }
 */
+  });
+
+  useEffect(() => {
+    const scrollers = document.querySelectorAll(".scroller");
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      addAnimation();
+    }
+
+    function addAnimation() {
+      scrollers.forEach((scroller) => {
+        // add data-animated="true" to every `.scroller` on the page
+        scroller.setAttribute("data-animated", true);
+
+        // Make an array from the elements within `.scroller-inner`
+        const scrollerInner = scroller.querySelector(".scroller__inner");
+        const scrollerContent = Array.from(scrollerInner.children);
+
+        // For each item in the array, clone it
+        // add aria-hidden to it
+        // add it into the `.scroller-inner`
+        scrollerContent.forEach((item) => {
+          const duplicatedItem = item.cloneNode(true);
+          duplicatedItem.setAttribute("aria-hidden", true);
+          scrollerInner.appendChild(duplicatedItem);
+        });
+      });
+    }
   });
 
   return (
@@ -119,6 +147,18 @@ reveals[i].classList.add("active");
         <section>
           <img className="watchImg" src={watch} />
         </section>
+
+        <div class="scroller" data-speed="fast">
+          <ul class="tag-list scroller__inner">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JS</li>
+            <li>SSG</li>
+            <li>webdev</li>
+            <li>animation</li>
+            <li>UI/UX</li>
+          </ul>
+        </div>
 
         <section>
           <article>
@@ -247,12 +287,10 @@ const ScrollWrapper = styled.section`
         opacity: 0;
         animation: fade-Watch linear forwards;
         animation-timeline: view();
-        animation-range: 250px 500px;
+        /*animation-range: 250px 500px;*/
+        animation-range: entry 100px;
       }
-
       @keyframes fade-Watch {
-        from {
-        }
         to {
           scale: 1;
           opacity: 1;
@@ -347,5 +385,77 @@ const ScrollWrapper = styled.section`
         }
       }
     }
+
+    /* side Scroll*/
+    .scroller {
+      max-width: 700px;
+    }
+    .scroller__inner {
+      padding-block: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .scroller[data-animated="true"] {
+      overflow: hidden;
+      overflow-x: scroll;
+      -webkit-mask: linear-gradient(
+        90deg,
+        transparent,
+        white 20%,
+        white 80%,
+        transparent
+      );
+      mask: linear-gradient(
+        90deg,
+        transparent,
+        white 20%,
+        white 80%,
+        transparent
+      );
+    }
+
+    .scroller[data-animated="true"] .scroller__inner {
+      width: max-content;
+      flex-wrap: nowrap;
+      animation: scroll var(--_animation-duration, 40s)
+        var(--_animation-direction, forwards) linear infinite;
+    }
+
+    .scroller[data-direction="right"] {
+      --_animation-direction: reverse;
+    }
+
+    .scroller[data-direction="left"] {
+      --_animation-direction: forwards;
+    }
+
+    .scroller[data-speed="fast"] {
+      --_animation-duration: 20s;
+    }
+
+    .scroller[data-speed="slow"] {
+      --_animation-duration: 60s;
+    }
+
+    @keyframes scroll {
+      to {
+        transform: translate(calc(-50% - 0.5rem));
+      }
+    }
+
+    .tag-list {
+      margin: 0;
+      padding-inline: 0;
+      list-style: none;
+    }
+
+    .tag-list li {
+      padding: 1rem;
+      background: var(--clr-primary-400);
+      border-radius: 0.5rem;
+      box-shadow: 0 0.5rem 1rem -0.25rem var(--clr-primary-900);
+    }
+    /* side Scroll*/
   }
 `;

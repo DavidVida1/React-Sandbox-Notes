@@ -11,12 +11,16 @@ import Active from "../Pages/Active";
 import Notes from "../Pages/Notes";
 import Tabs from "../Pages/Tabs";
 import Scroll from "../Pages/Scroll";
+import Burger from "../Pages/Burger";
+import GSAPAnimation from "../Pages/GSAPAnimation";
 import { IoMdBook } from "react-icons/io";
 import { IoHomeOutline } from "react-icons/io5";
 import { GoPencil } from "react-icons/go";
 import { PiTabs } from "react-icons/pi";
 import { LuScroll } from "react-icons/lu";
 import { IoIosAdd } from "react-icons/io";
+import { CiMenuBurger } from "react-icons/ci";
+import { MdAnimation } from "react-icons/md";
 
 import Home from "../Pages/Home";
 
@@ -51,6 +55,12 @@ const navData = [
   { icon: <PiTabs />, name: "Tabs", navComponent: <Tabs /> },
   { icon: <LuScroll />, name: "Scroll", navComponent: <Scroll /> },
   { icon: <IoIosAdd />, name: "Active", navComponent: <Active /> },
+  { icon: <CiMenuBurger />, name: "Burger", navComponent: <Burger /> },
+  {
+    icon: <MdAnimation />,
+    name: "GSAPAnimation",
+    navComponent: <GSAPAnimation />,
+  },
 ];
 
 export default navData;
