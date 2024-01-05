@@ -5,9 +5,76 @@ import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { CiMenuBurger } from "react-icons/ci";
+import { useGSAP } from "@gsap/react";
+import TweenMax from "gsap/gsap-core";
+import Expo from "gsap";
+import Power3 from "gsap";
+
 import styled from "styled-components";
 
 export default function GSAPANimation() {
+  useGSAP(() => {
+    TweenMax.from(".logo", 1, {
+      opacity: 0,
+      x: -20,
+      ease: Expo.easeInOut,
+    });
+
+    TweenMax.from(".search", 1, {
+      opacity: 0,
+      delay: 0.5,
+      x: -20,
+      ease: Expo.easeInOut,
+    });
+
+    TweenMax.from(".menu", 1, {
+      opacity: 0,
+      delay: 0.6,
+      x: -20,
+      ease: Expo.easeInOut,
+    });
+
+    TweenMax.from(".title", 1, {
+      opacity: 0,
+      delay: 1,
+      y: 20,
+      ease: Expo.easeInOut,
+    });
+
+    TweenMax.from(".btn", 1, {
+      opacity: 0,
+      delay: 1.6,
+      y: 20,
+      ease: Expo.easeInOut,
+    });
+
+    TweenMax.from(".line-one", 1, {
+      opacity: 0,
+      delay: 2,
+      y: -800,
+      ease: Expo.easeInOut,
+    });
+    TweenMax.from(".line-two", 1, {
+      opacity: 0,
+      delay: 2.5,
+      y: -800,
+      ease: Expo.easeInOut,
+    });
+
+    TweenMax.from(".img", 2, {
+      opacity: 0,
+      delay: 2.9,
+      y: -800,
+      ease: Expo.easeInOut,
+    });
+
+    TweenMax.from(".year", 1, {
+      opacity: 0,
+      delay: 1.4,
+      y: -20,
+      ease: Expo.easeInOut,
+    });
+  }, []);
   return (
     <GSAPAnimation>
       <h2 className="headerSection">GSAPAnimation</h2>
@@ -109,15 +176,16 @@ const GSAPAnimation = styled.section`
       rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
     & .stripes {
+      position: relative;
       & .line-one {
-        position: fixed;
+        position: absolute;
         width: 15px;
         height: 100vh;
         background: #ff3131;
         left: 23%;
       }
       & .line-two {
-        position: fixed;
+        position: absolute;
         width: 25px;
         height: 100vh;
         background: #183d79;
